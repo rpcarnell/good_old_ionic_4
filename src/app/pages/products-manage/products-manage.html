@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar  color="primary" fixed>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+       <ion-title>{{ 'PRODUCT' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+    <img src="./assets/img/more-10.png" (click)="addProduct()" style="float: left; width: 70px;" />
+    <div style="clear: both;"></div>
+    <br />
+  <div *ngIf="!doesNotHaveResults">
+    <ion-row *ngFor="let product of products; let i = index;" no-padding class="content-row one-line"  style="background: #fff;"  >
+        <ion-card class="shadow" no-margin margin-bottom style="width: 100%; cursor: default;"> 
+      <ion-card-content>
+        
+  <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+<ion-item width-100>
+      <!--<a (click)="entityEdit(entity.id)">{{entity.title}}</a>-->
+      <a (click)="goTo('modelmanage', product.id)" style="font-size: 1.5em; cursor: pointer; margin-left: 20px; margin-right: 20px;">{{product.title}}</a>
+    </ion-item>
+  
+      
+    <ion-item width-100 class="switcher-item">
+      <ion-label></ion-label>
+      <a (click)="deleteItem(product.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+          <ion-icon name="close-circle" slot="start" color="primary"></ion-icon></a>
+      <a (click)="editProduct(product.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+        <ion-icon name="create" slot="start" color="primary"></ion-icon></a>
+
+      <a (click)="manageModels(product.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+        <ion-icon name="menu" slot="start" color="primary"></ion-icon></a>
+
+       </ion-item>
+   
+
+
+        </ion-card-content>
+      </ion-card>
+      </ion-row>
+    </div>
+  <no-results-message *ngIf="doesNotHaveResults">
+    <span primary-text trans>{{ 'NO_PRODUCT' | translate }}</span>
+    <span secondary-text trans></span>
+   </no-results-message>
+
+    </ion-content>

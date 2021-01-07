@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar mode="ios"  (ionClear)="onCancelSearch($event)" (keyup.enter)="onSearch($event)" [placeholder]="'SEARCH' | translate" >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+  
+  <ion-content #container scrollEvents="true" padding>
+  
+    <ion-refresher slot="fixed" (ionRefresh)="onReload($event)">
+      <ion-refresher-content pullingText="{{ 'PULL_TO_REFRESH' | translate }}" refreshingText="{{ 'REFRESHING' | translate }}">
+      </ion-refresher-content>
+    </ion-refresher>
+  
+    <empty-view *ngIf="isErrorViewVisible" icon="alert" [text]="'ERROR_NETWORK' | translate">
+    </empty-view>
+  
+    <empty-view *ngIf="isEmptyViewVisible" icon="map" [text]="'EMPTY_PLACES' | translate">
+    </empty-view>
+  
+ 
+  
+    <ion-grid fixed>
+  
+  
+      <br /><br /><br />
+      <ion-row>
+        <ion-col size-xs="12" size-sm="6" size-md="6" size-lg="6" float-left *ngFor="let entity of entities">
+  
+          <entity-card (click)="goToEntity(entity.id)"
+            [entityService]= entityService
+            [entity]= entity
+            [scrollObservable]="container.ionScroll">
+          </entity-card>
+    
+        </ion-col>
+        <span *ngIf="!entitiesFound" style="font-size: 2em;">{{'EMPTY_DATA' | translate}}</span>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-infinite-scroll *ngIf="isContentViewVisible" (ionInfinite)="onLoadMore($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  </ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar  color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+     <ion-title *ngIf="productTitleShow">{{productTitle}} - {{ 'MODELS_MANAGE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="./assets/img/more-10.png" (click)="addModel()" style="float: left; width: 70px;" />
+  <div style="clear: both;"></div>
+  <br />
+<div *ngIf="!doesNotHaveResults">
+  <ion-row *ngFor="let model of productmodels; let i = index;" no-padding class="content-row one-line"  style="background: #fff;"  >
+      <ion-card class="shadow" no-margin margin-bottom style="width: 100%; cursor: default;"> 
+
+<div style="float: left; margin: 5px; margin-right: 15px;">
+<ion-img *ngIf="model.photo" [src]="PLACE_IMAGE_URL + model.photo" style="margin-left: 0px; height: 150px; width: 120px;"></ion-img>
+<ion-img *ngIf="! model.photo" src="./assets/img/blank_model.png" style="margin-left: 0px; height: 120px; width: 120px;"></ion-img>
+      </div>
+
+    <ion-card-content>
+      
+<!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+<ion-item width-100>
+    <!--<a (click)="entityEdit(entity.id)">{{entity.title}}</a>-->
+    <a (click)="goTo('modelmanage', model.id)" style="font-size: 1.5em; cursor: pointer; margin-left: 20px; margin-right: 20px;">{{model.title}}</a>
+  </ion-item>
+
+    
+  <ion-item width-100 class="switcher-item">
+    <ion-label></ion-label>
+    <a (click)="deleteModel(model.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+        <ion-icon name="close-circle" slot="start" color="primary"></ion-icon></a>
+    <a (click)="editModel(model.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+      <ion-icon name="create" slot="start" color="primary"></ion-icon></a>
+      <a (click)="modelViewDetail(model.id)" style="cursor: pointer; margin-left: 20px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+        <ion-icon name="menu" slot="start" color="primary"></ion-icon></a>
+
+     </ion-item>
+ 
+
+
+      </ion-card-content>
+    </ion-card>
+    </ion-row>
+  </div>
+<no-results-message *ngIf="doesNotHaveResults">
+  <span primary-text trans>{{ 'NO_MODEL' | translate }}</span>
+  <span secondary-text trans></span>
+ </no-results-message>
+
+  </ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar  color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+     <ion-title>{{ 'MODEL' | translate }}: {{modelInfo.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="./assets/img/more-10.png" (click)="addModelDetail()" style="float: left; width: 70px;" />
+  <div style="clear: both;"></div><br />
+ <div *ngIf="!doesNotHaveResults">
+
+    
+  <ion-row no-padding class="content-row one-line"  style="background: #fff;" *ngFor="let entity of modeldetails; let i = index;" >
+     
+      <ion-card class="shadow" no-margin margin-bottom style="width: 100%; cursor: default;"> <ion-card-content>
+       
+      <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+       <ion-item width-100>
+       <a (click)="manageItem(entity.id, i)" style="font-size: 1.5em; cursor: pointer; margin-left: 20px; margin-right: 20px;">{{entity.detail}}</a>
+      </ion-item>
+       <ion-item width-100 class="switcher-item">
+        <ion-label></ion-label>
+        <a (click)="manageItem(entity.id, i)" style="cursor: pointer; margin-left: 20px; margin-right: 20px;">{{ 'EDIT_ICON' | translate }}</a> | 
+        <a (click)="deleteItem(entity.id, i)" style="cursor: pointer; margin-top: 4px; font-weight: bold; font-size: 1.5em; margin-left: 20px; margin-right: 20px;">
+            <ion-icon name="close-circle" slot="start" color="primary"></ion-icon>
+        </a>
+       </ion-item> 
+
+    
+
+      </ion-card-content>
+    </ion-card>
+    </ion-row>
+
+  </div>
+  <no-results-message *ngIf="doesNotHaveResults">
+    <span primary-text trans>{{ 'NO_MODEL_DETAIL' | translate }}</span>
+    <span secondary-text trans></span>
+   </no-results-message>
+ 
+</ion-content>
+

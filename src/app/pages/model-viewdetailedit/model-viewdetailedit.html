@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar  color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+     <ion-title>{{ 'MODEL_DETAIL' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="modelDetailform" #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <ion-label position="stacked" color="medium">
+    <span class="bold">{{ 'DETAIL' | translate }}</span>
+  </ion-label>
+  <ion-item margin-vertical color="light" lines="none">
+    <ion-textarea rows="3" formControlName="textareadetail"></ion-textarea>
+  </ion-item>
+
+
+<ion-label position="stacked" color="medium">
+  <span class="bold">{{ 'LINK_TO_IMAGE_OR_VDO' | translate }}</span>
+</ion-label>
+<ion-item margin-vertical color="light" lines="none">
+  <ion-input type="text" formControlName="linkto_image_or_vdo"></ion-input>
+</ion-item>
+
+<ion-label position="stacked" color="medium"> <span class="bold">{{ 'UPLOAD_FROM_USER' | translate }}</span></ion-label>
+<ion-item margin-vertical lines="none">
+<ion-toggle style="margin-left: 20px; margin-right: 20px;" formControlName="upload_from_user"></ion-toggle> 
+</ion-item>
+
+
+<ion-label position="stacked" color="medium"> <span class="bold">{{ 'STATUS' | translate }}</span></ion-label>
+<ion-item margin-vertical lines="none">
+<ion-toggle style="margin-left: 20px; margin-right: 20px;"  formControlName="status"></ion-toggle> 
+</ion-item>
+
+
+ 
+</form>
+  
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div text-center>
+        <ion-button shape="round" color="secondary" [disabled]="!modelDetailform.valid"
+          (click)="editViewModelDetail()">
+          <span *ngIf="!isLoadingViewVisible">{{ 'EDIT' | translate }}</span>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

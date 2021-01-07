@@ -1,0 +1,47 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom" color="primary" *ngIf="platform.is('mobile')" fixed>
+    <ion-tab-button tab="posts" layout="icon-top">
+      <ion-icon name="megaphone"></ion-icon>
+      <ion-label>{{ 'EVENT' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="home" layout="icon-top">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>{{ 'ENTITY' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="privates" layout="icon-top">
+      <ion-icon name="build"></ion-icon>
+      <ion-label>{{ 'PRIVATE' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" layout="icon-top">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>{{ 'USER' | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+  <ion-tab-bar slot="top" color="primary" *ngIf="platform.is('desktop')" fixed>
+    <ion-tab-button tab="posts" layout="icon-start">
+      <ion-icon name="megaphone"></ion-icon>
+      <ion-label>{{ 'EVENT' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="home" layout="icon-start">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>{{ 'ENTITY' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="privates" layout="icon-start">
+      <ion-icon name="lock"></ion-icon>
+      <ion-label>{{ 'PRIVATE' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" layout="icon-start">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>{{ 'USER' | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-toolbar color="primary" fixed>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
+      <ion-title>{{ 'ENTITY' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  
+  <ion-content padding *ngIf="entity">
+      
+    <ion-grid _ngcontent-cgx-c7="" fixed="" class="ng-tns-c7-1 md grid-fixed hydrated shadow" ng-reflect-fixed="">
+    
+        <div *ngIf="entity.photo" class="bg-img" offset="10" defaultImage="./assets/img/placeholder1.png" [lazyLoad]="BACKENDURL + entity.photo">
+   
+        </div> 
+      
+
+    <h1>{{ entity?.title }}</h1>
+<br />
+<div style="margin-left: 1.5em">     
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ entity?.keyword }}</span>
+    </ion-label>
+
+
+    <ion-row style="margin-top: 10px;">
+      <ion-col size-xs="12" size-sm="12" size-md="12" float-start>{{ entity?.description }}
+ 
+  
+   </ion-col>
+      
+   
+  </ion-row>
+
+  <ion-row style="margin-top: 10px;" *ngIf="entity.address">
+
+      <ion-label position="stacked" color="medium">
+          <span class="bold" style="font-size: 1.5em">{{ 'ADDRESS' | translate }}</span>
+        </ion-label>
+
+    <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span>{{ entity.address }}</span><span *ngIf="entity.address2"> {{ entity.address2 }}</span>
+        <span *ngIf="entity.city">, {{ entity.city }}</span><span *ngIf="entity.state">, {{ entity.state}}</span>
+        <span *ngIf="entity.country">, {{ entity.country}}</span> <span *ngIf="entity.postcode">, {{ entity.postcode}}</span>
+
+
+
+ </ion-col>
+ 
+</ion-row>
+<ion-row *ngIf="entity.postcode">
+  <ion-label position="stacked" color="medium">
+     <span class="bold" style="font-size: 1.5em">{{ 'POSTCODE' | translate }}</span>
+   </ion-label>
+ 
+ <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span>{{ entity.postcode }}</span></ion-col>
+     
+  
+ </ion-row>
+
+ 
+ <ion-row *ngIf="showOpeningHours">
+  <ion-label position="stacked" color="medium">
+     <span class="bold" style="font-size: 1.5em">{{ 'OPENING_HOUR' | translate }}</span>
+   </ion-label>
+ 
+ <ion-col size-xs="12" size-sm="12" size-md="12" float-start>
+  
+   <table style="margin-top: 10px;">
+      <tr [ngStyle]="daysOnStyle(openingHours.mon_on)"><td>{{ 'THIS_MON' | translate }}:</td><td>{{ daysOn(openingHours.mon_on) }}</td><td>{{ openingHours.mon_open }}</td><td>{{ openingHours.mon_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.tue_on)"><td>{{ 'THIS_TUE' | translate }}:</td><td>{{ daysOn(openingHours.tue_on) }}</td><td>{{ openingHours.tue_open }}</td><td>{{ openingHours.tue_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.wed_on)"><td>{{ 'THIS_WED' | translate }}:</td><td>{{ daysOn(openingHours.wed_on) }}</td><td>{{ openingHours.wed_open }}</td><td>{{ openingHours.wed_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.thu_on)"><td>{{ 'THIS_THU' | translate }}:</td><td>{{ daysOn(openingHours.thu_on) }}</td><td>{{ openingHours.thu_open }}</td><td>{{ openingHours.thu_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.fri_on)"><td>{{ 'THIS_FRI' | translate }}:</td><td>{{ daysOn(openingHours.fri_on) }}</td><td>{{ openingHours.fri_open }}</td><td>{{ openingHours.fri_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.sat_on)"><td>{{ 'THIS_SAT' | translate }}:</td><td>{{ daysOn(openingHours.sat_on)}}</td><td>{{ openingHours.sat_open }}</td><td>{{ openingHours.sat_close }}</td></tr>
+      <tr [ngStyle]="daysOnStyle(openingHours.sun_on)"><td>{{ 'THIS_SUN' | translate }}:</td><td>{{ daysOn(openingHours.sun_on)}}</td><td>{{ openingHours.sun_open }}</td><td>{{ openingHours.sun_close }}</td></tr>
+    </table>
+ </ion-col>
+     
+  
+ </ion-row>
+ 
+
+ 
+
+    
+
+    <ion-row style="margin-top: 10px;">
+        <ion-col size-xs="12" size-sm="12" size-md="12" float-start></ion-col>
+        
+     
+    </ion-row>
+  </div>
+</ion-grid>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <div text-center>
+  
+      </div>
+    </ion-toolbar>
+  </ion-footer>

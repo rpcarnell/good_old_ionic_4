@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar  color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+     <ion-title>{{ 'MODEL' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+ 
+  <form [formGroup]="praddform" #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <ion-label position="stacked" color="medium" style="margin-top: 50px;">
+      <span class="bold">{{ 'PHOTO' | translate }}</span>
+    </ion-label>
+    <div *ngIf="showAddPhoto">
+      <img src="./assets/img/more-m-10.png" (click)="addPhoto()" style="float: left; width: 70px;" />
+      <img *ngIf="itemPic" [src]="itemPic" style="max-height: 300px; float: right; margin-right: 20px;" />
+    </div>
+    <div style="clear: both;"></div>
+    <br /> 
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'NAME_NEW_MODEL' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical color="light" lines="none">
+      <ion-input type="text" formControlName="productName"></ion-input>
+    </ion-item>
+
+    <br />
+    <ion-label position="stacked" color="medium"> <span class="bold">{{ 'STATUS' | translate }}</span></ion-label>
+    <ion-item  lines="none">
+  <ion-toggle formControlName="productStatus" style="margin-left: 20px; margin-right: 20px;"></ion-toggle> 
+  </ion-item>
+  <br />
+  <ion-label position="stacked" color="medium"><span class="bold">{{ 'FUNCTION' | translate }}</span></ion-label>
+  <ion-item  style="padding: 0px;">
+    <ion-checkbox slot="start" formControlName="offerpublic" ></ion-checkbox><span><span style="color: #686a72;">{{ 'OFFER_TO_PUBLIC' | translate }}</span></span>
+    
+    </ion-item>
+  
+<ion-item  style="padding: 0px;">
+  <ion-checkbox slot="start" formControlName="internaluse" ></ion-checkbox><span><span style="color: #686a72;">{{ 'INTERNAL_USE_OR_AS_COMPONENT' | translate }}</span></span>
+</ion-item>
+
+<br /><br />
+<ion-label position="stacked" color="medium">
+  <span class="bold">{{ 'COST_PER_UNIT' | translate }}</span>
+</ion-label>
+<ion-item margin-vertical color="light" lines="none">
+  <ion-input type="text" formControlName="cost" ></ion-input>
+</ion-item>
+
+
+<ion-label position="stacked" color="medium">
+  <span class="bold">{{ 'UNIT' | translate }}</span>
+</ion-label>
+<ion-item margin-vertical color="light" lines="none">
+  <ion-input type="text" formControlName="unit" ></ion-input>
+</ion-item>
+
+
+<ion-label position="stacked" color="medium">
+  <span class="bold">{{ 'PRICE' | translate }}</span>
+</ion-label>
+<ion-item margin-vertical color="light" lines="none">
+  <ion-input type="text" formControlName="price" ></ion-input>
+</ion-item>
+
+
+<br />
+<ion-label position="stacked" color="medium">
+  <span class="bold">{{ 'FLEXIBLE_PRICE' | translate }}</span>
+</ion-label>
+<ion-item  lines="none">
+    <ion-toggle formControlName="flexible_price" style="margin-left: 20px; margin-right: 20px;"></ion-toggle> 
+</ion-item>
+
+
+
+<br />
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'SALES_PERIOD' | translate }}</span>
+    </ion-label>
+    <div style="margin-left: 1em; padding-top: 1em;">
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'BEGIN' | translate }}</span>
+    </ion-label>
+    <ion-item  margin-vertical color="light" lines="none">
+    <ion-datetime displayFormat="MM/DD/YYYY" formControlName="dateBegin" max="2080-12-31"></ion-datetime>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'END' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical color="light" lines="none">
+    <ion-datetime displayFormat="MM/DD/YYYY" formControlName="dateEnd" max="2080-12-31"></ion-datetime>
+    </ion-item>
+  </div>
+  
+  <br />
+  
+  <ion-label position="stacked" color="medium"> <span class="bold">{{ 'DELIVERY_ONLINE' | translate }}</span></ion-label>
+  <ion-item  lines="none">
+<ion-toggle formControlName="online_deliver" style="margin-left: 20px; margin-right: 20px;"></ion-toggle> 
+</ion-item>
+
+
+<div style="display: none;"><input type="file" name="file_1" (change)="handleFileInput($event)"></div>
+
+
+</form>
+  
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div text-center>
+        <ion-button shape="round" color="secondary"
+          (click)="addModel()" [disabled]="!praddform.valid">
+          <span *ngIf="!isLoadingViewVisible">{{ 'ADD' | translate }}</span>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

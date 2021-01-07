@@ -1,0 +1,100 @@
+<ion-header no-border>
+  <ion-toolbar class="transparent" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'CONTACT' | translate }} Entity Work</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label position="stacked" color="medium">
+    <span class="bold">{{ 'FULLNAME' | translate }}</span>
+  </ion-label>
+  <ion-item margin-vertical lines="none" color="medium">
+   {{username}}
+  </ion-item>
+  <form [formGroup]="form" #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+    
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'ADDRESS' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'ADDRESS2' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="address2"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'CITY' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="city"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'STATE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="state"></ion-input>
+    </ion-item>
+
+   
+    
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'COUNTRY' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+       
+        <ion-select value="brown" okText="Okay" cancelText="Dismiss" formControlName="country">
+            <ion-select-option *ngFor="let cl of countriesList" value="{{cl.abbr}}" [selected]="cl.abbr == countryAbbr">{{cl.country}}</ion-select-option>
+         </ion-select>
+       
+    </ion-item>
+ 
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'POSTCODE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="postcode"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'EMAIL' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'PHONE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="phone"></ion-input>
+    </ion-item>
+  
+
+  </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div text-center>
+        <ion-button shape="round" color="secondary"
+          [disabled]="isLoadingViewVisible"
+          (click)="myForm.ngSubmit.emit()">
+          <ion-spinner *ngIf="isLoadingViewVisible"></ion-spinner>
+          <span *ngIf="!isLoadingViewVisible">{{ 'SUBMIT' | translate }}</span>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

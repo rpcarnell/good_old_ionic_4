@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="primary" fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'PROOF' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+    <ion-grid _ngcontent-cgx-c7="" fixed="" no-padding="" class="ng-tns-c7-1 md grid-fixed hydrated" ng-reflect-fixed="">
+      
+
+
+  <h1>{{user.fullname}}</h1>
+
+ <br />
+  <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'PROOF_SELF' | translate }}</span>
+    </ion-label>
+    <ion-row style="margin-top: 10px;">
+        <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span (click)="uploadDoc(1)" style="color: #d4145a; text-decoration: underline;">{{'UPLOAD' | translate}}</span>  
+          <span [hidden]="viewFileFunc(0)"> |  <span><a href="javascript:void(0)" (click)="fileURL(0)">{{'VIEW' | translate}}</a></span></span></ion-col>
+        <div [hidden]="tryy(0)" class="filesucc">File Uploaded Successfully</div>
+        <div style="display: none;"><input id="proofoffile_1" type="file" name="file_1" (change)="handleFileInput($event.target.files)"></div>
+    </ion-row>
+<hr /><br />
+    <ion-label position="stacked" color="medium">
+        <span class="bold">{{ 'PROOF_ADDRESS' | translate }}</span>
+      </ion-label>
+      <ion-row style="margin-top: 10px;">
+          <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span (click)="uploadDoc(2)" style="color: #d4145a; text-decoration: underline;">{{'UPLOAD' | translate}}</span>  <span [hidden]="viewFileFunc(1)"> |  <span><a href="javascript:void(0)" (click)="fileURL(1)">{{'VIEW' | translate}}</a></span></span>
+          
+          </ion-col>
+          <div [hidden]="tryy(1)" class="filesucc">File Uploaded Successfully</div>
+      </ion-row>
+      <hr /><br />
+
+
+      <ion-label position="stacked" color="medium">
+          <span class="bold">{{ 'PROOF_EDUCATION' | translate }}</span>
+        </ion-label>
+        <ion-row style="margin-top: 10px;">
+            <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span (click)="uploadDoc(3)" style="color: #d4145a; text-decoration: underline;">{{'UPLOAD' | translate}}</span>  <span [hidden]="viewFileFunc(2)"> |  <span><a href="javascript:void(0)" (click)="fileURL(2)">{{'VIEW' | translate}}</a></span></span></ion-col>
+            <div [hidden]="tryy(2)" class="filesucc">File Uploaded Successfully</div>
+        </ion-row>
+        <hr /><br />
+
+        <ion-label position="stacked" color="medium">
+            <span class="bold">{{ 'PROOF_WORK' | translate }}</span>
+          </ion-label>
+          <ion-row style="margin-top: 10px;">
+              <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span (click)="uploadDoc(4)" style="color: #d4145a; text-decoration: underline;">{{'UPLOAD' | translate}}</span>  <span [hidden]="viewFileFunc(3)"> |  <span><a href="javascript:void(0)" (click)="fileURL(3)">{{'VIEW' | translate}}</a></span></span></ion-col>
+              <div [hidden]="tryy(3)" class="filesucc">File Uploaded Successfully</div>
+          </ion-row>
+          <hr /><br />
+          <ion-label position="stacked" color="medium">
+              <span class="bold">{{ 'PROOF_FINANCE' | translate }}</span>
+            </ion-label>
+            <ion-row style="margin-top: 10px;">
+                <ion-col size-xs="12" size-sm="12" size-md="12" float-start><span (click)="uploadDoc(5)" style="color: #d4145a; text-decoration: underline;">{{'UPLOAD' | translate}}</span>  <span [hidden]="viewFileFunc(4)"> | <span><a href="javascript:void(0)" (click)="fileURL(4)">{{'VIEW' | translate}}</a></span></span></ion-col>
+                <div [hidden]="tryy(4)" class="filesucc">File Uploaded Successfully</div>
+            </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div text-center>
+
+    </div>
+  </ion-toolbar>
+</ion-footer>

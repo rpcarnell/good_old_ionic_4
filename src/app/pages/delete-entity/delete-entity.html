@@ -1,0 +1,30 @@
+<ion-header no-border>
+  <ion-toolbar class="transparent" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'DELETE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-row><h2>{{entity.title}}</h2></ion-row>
+  
+  <ion-row>{{ 'ENTITY_DELETE_WARNING' | translate }}</ion-row>
+
+  
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div text-center>
+        <ion-button shape="round" color="secondary"
+          (click)="deleteEntity()">
+          <span *ngIf="!isLoadingViewVisible">{{ 'DELETE' | translate }}</span>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

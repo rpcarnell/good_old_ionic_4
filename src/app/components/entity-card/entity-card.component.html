@@ -1,0 +1,37 @@
+<ion-card button class="shadow" no-margin margin-bottom [color]="color">
+<div style="float: left; margin: 5px; margin-right: 15px;">
+
+    
+        <ion-img *ngIf="entity.photo" [src]="PLACE_IMAGE_URL + entity.photo" style="margin-left: 0px; height: 150px; width: 200px;"></ion-img>
+     
+
+    
+    <ion-img *ngIf="! entity.photo" src="./assets/img/blank_entity.png" style="margin-left: 0px; height: 120px; width: 200px;"></ion-img>
+
+   <!-- <ion-img *ngIf="!entity.photo" [src]="/assets/img/placeholder1.png" style="margin-left: 0px; height: 150px; max-width: 150px;"></ion-img>
+   --> 
+  <!--
+  <ion-avatar item-left (click) ="visitProfile(item.uploader_id)">
+         <preload-image [ratio]="{w:1, h:1}"  [src]="MAIN_URL + item.uploader_thumb" title=""></preload-image>
+
+       </ion-avatar>
+  -->
+  </div>
+
+  <ion-card-content>
+    <div style="min-height: 140px">
+       
+        <h1 class="bold">{{ entity.title }}</h1>
+      
+      <p class="ellipsis text-small bold">
+        <ion-text color="medium">
+          <span class="bold">{{ entity.keyword }}</span>
+        </ion-text>
+      </p> 
+      <div style="margin-top: 10px">
+        <ion-text color="dark">{{ entity.description | slice:0:150 }}...</ion-text>
+      </div>
+ 
+    </div>
+  </ion-card-content>
+</ion-card>

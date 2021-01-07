@@ -1,0 +1,33 @@
+<ion-card button class="shadow" no-margin margin-bottom [color]="color">
+  <div class="bg-img" offset="10" defaultImage="./assets/img/placeholder1.png" [lazyLoad]="place.image?.url()"
+    [scrollObservable]="scrollObservable">
+    <star-rating [starType]="'svg'" [size]="starSize" [readOnly]="true" [showHalfStars]="false" [rating]="place.rating">
+    </star-rating>
+  </div>
+  <ion-card-content>
+    <div text-nowrap>
+      <ion-text color="primary">
+        <h3 class="bold ellipsis">{{ place.title }}</h3>
+      </ion-text>
+      <p class="ellipsis text-small bold">
+        <ion-text color="medium">
+          <span class="bold">{{ place.category?.title }}</span>
+        </ion-text>
+      </p>
+      <p class="text-small bold">
+        <ion-text color="dark">
+          {{ place.distance(extraParams.location, extraParams.unit) }}
+        </ion-text>
+      </p>
+
+      <div *ngIf="showStatus">
+        <ion-chip no-margin class="text-small" [color]="getStatusColor(place.status)">
+          <span *ngIf="place.status === 'Pending'">{{ 'PENDING' | translate }}</span>
+          <span *ngIf="place.status === 'Rejected'">{{ 'REJECTED' | translate }}</span>
+          <span *ngIf="place.status === 'Approved'">{{ 'APPROVED' | translate }}</span>
+          <span *ngIf="place.status === 'Expired'">{{ 'EXPIRED' | translate }}</span>
+        </ion-chip>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

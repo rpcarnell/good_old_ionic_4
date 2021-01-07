@@ -1,0 +1,116 @@
+<ion-header no-border>
+    <ion-toolbar class="transparent" color="primary">
+      <ion-buttons slot="end">
+        <ion-button (click)="onDismiss()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{ itemTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    
+    
+
+    <ion-row no-padding class="content-row one-line" *ngIf="itemTitle != ''">
+       
+            <ion-list no-padding no-margin style="width: 100%;">
+                    <ion-item color="light"  (click)="unhideFirst()">
+                      <ion-icon name="key" slot="start" color="primary"></ion-icon>
+                      <ion-label>
+                        <p class="link bold text-slarge">{{ 'FRONT_OFFICE' | translate }}</p>
+                      </ion-label>
+                      <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                   
+
+                    </ion-item>
+
+                    <div [hidden]="hiddenFirst()" class="slideTables">
+
+                   
+                            <ion-item class="slideTables">
+                                 
+                                  <ion-label style="margin-left: 75px;">
+                                    <p class="link bold text-slarge" (click)="goTo('EntityTitle')">{{ 'ENTITY_INFO' | translate }}</p>
+                                  </ion-label>
+                                  
+                                </ion-item>
+            
+                                <ion-item class="slideTables">
+                                     
+                                    <ion-label style="margin-left: 75px;">
+                                      <p class="bold link text-slarge" (click)="goTo('Products')">{{ 'PRODUCT' | translate }}</p>
+                                    </ion-label>
+                                    
+                                  </ion-item>
+            
+                                 
+                                  <ion-item class="slideTables">
+                                        
+                                        <ion-label style="margin-left: 75px;">
+                                          <p class="bold link text-slarge">{{ 'PROMOTION' | translate }}</p>
+                                        </ion-label>
+                                        
+                                      </ion-item>
+            
+                                      <ion-item class="slideTables">
+                                          
+                                            <ion-label style="margin-left: 75px;">
+                                              <p class="bold link text-slarge">{{ 'MEMBERSHIP' | translate }}</p>
+                                            </ion-label>
+                                           
+                                          </ion-item>
+
+                                          <ion-item class="slideTables">
+                                                
+                                                <ion-label style="margin-left: 75px;">
+                                                  <p class="bold link text-slarge">{{ 'POST' | translate }}</p>
+                                                </ion-label>
+                                                
+                                              </ion-item>  
+                                              
+                                              
+                                          <ion-item class="slideTables">
+                                                 
+                                                <ion-label style="margin-left: 75px;">
+                                                  <p class="bold link text-slarge">{{ 'MESSAGE' | translate }}</p>
+                                                </ion-label>
+                                               
+                                              </ion-item>  
+                                        </div>
+
+                    <ion-item style="background: #fff;">
+                        <ion-icon name="key" slot="start" color="primary"></ion-icon>
+                        <ion-label>
+                          <p class="bold link text-slarge">{{ 'BACK_OFFICE' | translate }}</p>
+                        </ion-label>
+                        <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                      </ion-item>
+
+                     
+                      <ion-item color="light">
+                            <ion-icon name="people" slot="start" color="primary"></ion-icon>
+                            <ion-label>
+                              <p class="bold link text-slarge">{{ 'PEOPLE' | translate }}</p>
+                            </ion-label>
+                            <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                          </ion-item>
+
+                          <ion-item style="background: #fff;">
+                                <ion-icon name="clock" slot="start" color="primary"></ion-icon>
+                                <ion-label>
+                                  <p class="bold link text-slarge">{{ 'PERFORMANCE' | translate }}</p>
+                                </ion-label>
+                                <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                              </ion-item>
+                      
+            </ion-list>
+
+        
+      
+      </ion-row>
+
+  </ion-content>
+  
+ 

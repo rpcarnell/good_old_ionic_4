@@ -1,0 +1,21 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+
+.my-custom-modal-css .modal-wrapper {
+    min-height: 40%;
+    height: auto;
+    top:10%;
+    position: absolute; 
+    display: block;  
+ }
+
+ .popover-content .sc-ion-popover-md
+{
+    overflow: none !important;
+    border-radius: 5px !important;
+    background: #a00;
+}

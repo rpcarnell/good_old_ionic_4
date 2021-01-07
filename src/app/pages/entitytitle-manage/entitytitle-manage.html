@@ -1,0 +1,150 @@
+<ion-header>
+    <ion-toolbar  color="primary" fixed>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+       <ion-title>{{ itemTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content padding>
+    
+    
+
+    <ion-row no-padding class="content-row one-line">
+       
+            <ion-list no-padding no-margin style="width: 100%;">
+
+                <ion-item color="light">
+                   <ion-label>
+                      <h2 class="link bold text-slarge">{{ 'ENTITY_INFO' | translate }}</h2>
+                    </ion-label> </ion-item>
+
+
+                    <ion-item style="background: #fff;"  (click)="unhideFirst(0)">
+                      <ion-icon name="camera" slot="start" color="primary"></ion-icon>
+                      <ion-label>
+                        <p class="link bold text-slarge">{{ 'PHOTO' | translate }}</p>
+                      </ion-label>
+                      <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                   
+
+                    </ion-item>
+                    <div style="padding-top: 20px; padding-bottom: 20px;" [hidden]="! tryy(0)">
+                      
+                      <a href="javascript:void(0)" (click)="uploadImage()" style="font-size: 1.5em; font-weight: bold; text-decoration: none;">
+                          <ion-icon name="arrow-up" slot="start" color="primary"></ion-icon>
+                        {{'UPLOAD' | translate}}</a>
+                      <div style="display: none;"><input type="file" name="file_1" (change)="handleFileInput($event.target.files)"></div>
+                      <div *ngIf="entityPicture"><br /><img [src]="entityPicture" style="width: 250px; max-height: 500px;" /></div>
+                    </div>
+                
+
+                    <ion-item color="light">
+                        <ion-icon name="paper" slot="start" color="primary"  (click)="unhideFirst(1)"></ion-icon>
+                        <ion-label (click)="unhideFirst(1)">
+                          <p class="bold link text-slarge">{{ 'DESCRIPTION' | translate }}</p>
+                        </ion-label>
+
+                        <ion-button shape="round" color="secondary" [hidden]="! tryy(1)" (click)="updateEntity('description')" [disabled]="disableButton(1)">
+                          {{'UPDATE' | translate}}
+                        </ion-button>
+
+                        
+                        <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                      </ion-item>
+                      <div style="padding-top: 20px; padding-bottom: 20px;" [hidden]="! tryy(1)">
+                      <ion-textarea rows="6" maxlength="1000" [(ngModel)]="itemDescription" placeholder="{{ENTITY_INFO_DESCRIPTION | translate}}" value="{{itemDescription}}" style="border: 2px solid #dedede;"></ion-textarea>
+                      </div>
+                  
+                     
+                      <ion-item style="background: #fff;">
+                            <ion-icon name="search" slot="start" color="primary"></ion-icon>
+                            <ion-label>
+                              <p class="bold link text-slarge" (click)="unhideFirst(2)">{{ 'KEYWORD' | translate }}</p>
+                            </ion-label>
+
+                            <ion-button shape="round" color="secondary" [hidden]="! tryy(2)" (click)="updateEntity('keyword')" [disabled]="disableButton(2)">
+                              {{'UPDATE' | translate}}
+                            </ion-button>
+
+                            <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                          </ion-item>
+
+                          <div style="padding-top: 20px; padding-bottom: 20px;" [hidden]="! tryy(2)">
+                            <ion-textarea rows="6" maxlength="200" [(ngModel)]="itemKeyword" placeholder="{{ENTITY_INFO_KEYWORD | translate}}" value="{{itemKeyword}}" style="border: 2px solid #dedede;"></ion-textarea>
+                            </div>
+
+                          <ion-item color="light">
+                              <ion-icon name="pin" slot="start" color="primary"></ion-icon>
+                              <ion-label>
+                                <p class="bold link text-slarge" (click)="unhideFirst(3)">{{ 'ADDRESS' | translate }}</p>
+                              </ion-label>
+                              <ion-button shape="round" color="secondary" [hidden]="! tryy(3)" (click)="updateAddress()" [disabled]="disableAddressButton()">
+                                  {{'UPDATE' | translate}}
+                                </ion-button>
+    
+                              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                            </ion-item>
+                            <div style="padding-top: 20px; padding-bottom: 20px;" [hidden]="! tryy(3)">
+                              <form [formGroup]="form" #myForm="ngForm">
+                              <p><ion-label>{{ 'ADDRESS' | translate }}</ion-label><ion-input [(ngModel)]="itemAddress"  formControlName="address" style="border: 1px solid #dedede;" placeholder="{{ 'ADDRESS' | translate }}"></ion-input></p>
+                              <p><ion-label>{{ 'ADDRESS2' | translate }}</ion-label><ion-input [(ngModel)]="itemAddress2" formControlName="address2" style="border: 1px solid #dedede;" placeholder="{{ 'ADDRESS2' | translate }}"></ion-input></p>
+                              <p><ion-label>{{ 'CITY' | translate }}</ion-label><ion-input [(ngModel)]="itemCity" formControlName="city" style="border: 1px solid #dedede;" placeholder="{{ 'CITY' | translate }}"></ion-input></p>
+                              <p><ion-label>{{ 'STATE' | translate }}</ion-label><ion-input [(ngModel)]="itemState" formControlName="state" style="border: 1px solid #dedede;" placeholder="{{ 'STATE' | translate }}"></ion-input></p>
+                              <p><ion-label>{{ 'POSTCODE' | translate }}</ion-label><ion-input [(ngModel)]="itemPostCode" formControlName="postcode" style="border: 1px solid #dedede;" placeholder="{{ 'POSTCODE' | translate }}"></ion-input></p>
+                              <p><ion-label>{{ 'COUNTRY' | translate }}</ion-label>
+                              
+                                <ion-select value="brown" okText="Okay" cancelText="Dismiss" style="border: 1px solid #dedede;" formControlName="country">
+                                  <ion-select-option *ngFor="let cl of countriesList" value="{{cl.abbr}}">{{cl.country}}</ion-select-option>
+                               </ion-select>
+                              
+                              </p>
+                              <p><ion-label>{{ 'PHONE' | translate }}</ion-label><ion-input style="border: 1px solid #dedede;" [(ngModel)]="itemPhone" formControlName="phone" placeholder="{{ 'PHONE' | translate }}"></ion-input></p>
+                            </form>
+                           </div>
+
+                            <ion-item style="background: #fff;">
+                                <ion-icon name="clock" slot="start" color="primary"></ion-icon>
+                                <ion-label>
+                                  <p class="bold link text-slarge" (click)="unhideFirst(4)">{{ 'OPENING_HOUR' | translate }}</p>
+                                </ion-label>
+
+                                <ion-button shape="round" color="secondary" [hidden]="! tryy(4)" (click)="updateDays()">
+                                  {{'UPDATE' | translate}}
+                                </ion-button>
+
+                                <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+                              </ion-item>
+
+                              <div style="padding-top: 20px; padding-bottom: 20px;" [hidden]="! tryy(4)"> <br />
+
+<ion-grid style="border: 1px solid #dedede" *ngFor="let day of days; let i = index">
+  <ion-row>
+    <ion-col>
+        <h2 style="margin-top: 10px">{{ day | translate }}</h2> 
+    </ion-col>
+    <ion-col>
+        <ion-toggle [(ngModel)]="daysOn[i]" style="margin-top: 10px"></ion-toggle>
+    </ion-col>
+    <ion-col style="margin-top: 10px">
+        <select class="timeopen" [(ngModel)]="hourOpen[i]"><option *ngFor="let hour of hours" value="{{hour}}">{{hour}}</option></select> : <select [(ngModel)]="minOpen[i]" class="timeopen"><option *ngFor="let item of minutes" value="{{item}}">{{item}}</option></select>
+        - <select class="timeopen" [(ngModel)]="hourClosed[i]"><option *ngFor="let hour of hours" value="{{hour}}">{{hour}}</option></select> : <select [(ngModel)]="minClosed[i]" class="timeopen"><option *ngFor="let item of minutes" value="{{item}}">{{item}}</option></select>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</div>
+    
+
+                      
+            </ion-list>
+
+        
+      
+      </ion-row>
+
+  </ion-content>
+  
+ 

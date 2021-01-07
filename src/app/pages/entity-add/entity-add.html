@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-toolbar class="transparent" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'ENTITY_ADD' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" #myForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+ 
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'DESIRED_CODE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="code"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'ENTITY_TITLE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'TYPE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+
+        <ion-select interface="action-sheet" formControlName="entitytype" style="overflow: none;">
+            <ion-select-option value="B" >{{ 'BUSINESS' | translate }}</ion-select-option>
+            <ion-select-option value="E" >{{ 'EDUCATION' | translate }}</ion-select-option>
+            <ion-select-option value="N" >{{ 'NON_PROFIT' | translate }}</ion-select-option>
+         </ion-select>
+
+    
+    </ion-item>
+    <!--<ion-label position="stacked" color="medium">
+        <span class="bold">{{ 'PHOTO' | translate }}</span>
+      </ion-label>
+    <div *ngIf="showAddPhoto">
+           <img src="./assets/img/more-m-10.png" (click)="addPhoto()" style="float: left; width: 70px;" />
+        </div>
+      -->
+
+
+ 
+
+
+
+  </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <div text-center>
+        <ion-button shape="round" color="secondary"
+          [disabled]="isLoadingViewVisible"
+          (click)="myForm.ngSubmit.emit()">
+          <ion-spinner *ngIf="isLoadingViewVisible"></ion-spinner>
+          <span *ngIf="!isLoadingViewVisible">{{ 'CREATE' | translate }}</span>
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>

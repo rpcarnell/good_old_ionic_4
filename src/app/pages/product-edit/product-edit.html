@@ -1,0 +1,37 @@
+<ion-header no-border>
+  <ion-toolbar class="transparent" color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'PRODUCT_EDIT' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+     
+  <form [formGroup]="praddform" #myForm="ngForm" (ngSubmit)="onSubmit()"  #myForm="ngForm" novalidate>
+      
+   <ion-item margin-vertical lines="none" color="light">
+      <ion-input type="text" formControlName="productName"></ion-input>
+    </ion-item>
+ 
+ 
+    <ion-label position="stacked" color="medium"> <span class="bold">{{ 'STATUS' | translate }}</span></ion-label>
+    <ion-item width-100 class="switcher-item">
+<ion-toggle formControlName="productStatus" style="margin-left: 20px; margin-right: 20px;"></ion-toggle> 
+  </ion-item>
+
+ 
+</form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div text-center>
+      <ion-button shape="round" color="secondary" [disabled]="!praddform.valid" (click)="editProduct()">
+        <span *ngIf="!isLoadingViewVisible">{{ 'EDIT' | translate }}</span>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

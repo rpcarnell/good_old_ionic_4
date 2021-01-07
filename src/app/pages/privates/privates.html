@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-toolbar color="secondary" fixed>
+  <!--  <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>-->
+    <ion-title>{{ 'PRIVATE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid fixed>
+
+
+    <ion-row justify-content-center>
+      <ion-col no-padding size-xs="12" size-sm size-md size-lg="8">
+
+        <div>
+
+          <ion-list no-padding no-margin>
+            
+            <ion-item color="light" (click)="PresentModal('EntityAdd')">
+              <ion-icon name="add-circle" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <p class="link bold link text-slarge">{{ 'ENTITY_ADD' | translate }}</p>
+              </ion-label>
+              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+            </ion-item>
+
+            <ion-item color="light" (click)="goTo('EntitiesManage')">
+              <ion-icon name="briefcase" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <p class="bold link text-slarge">{{ 'ENTITY_MANAGE' | translate }}</p>
+              </ion-label>
+              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+            </ion-item>
+
+            <ion-item color="light" (click)="PresentModal('EntityWork')">
+              <ion-icon name="construct" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <p class="bold link text-slarge">{{ 'ENTITY_WORK' | translate }}</p>
+              </ion-label>
+              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+            </ion-item>
+            
+            <ion-item color="light" (click)="PresentModal('EntityStudy')">
+              <ion-icon name="bulb" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <p class="bold link text-slarge">{{ 'ENTITY_STUDY' | translate }}</p>
+              </ion-label>
+              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+            </ion-item>
+
+            <ion-item color="light" (click)="PresentModal('EntityInvoice')">
+              <ion-icon name="calculator" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <p class="bold link text-slarge">{{ 'ENTITY_INVOICE' | translate }}</p>
+              </ion-label>
+              <ion-icon name="arrow-forward" slot="end" color="dark"></ion-icon>
+            </ion-item>
+
+          </ion-list>
+
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="form" #signUpForm="ngForm" (ngSubmit)="onSubmit()" #myForm="ngForm" novalidate>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'NAME' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-icon slot="start" [color]="isFieldValid(form.controls.name) ? 'primary' : 'medium'" [name]="isFieldValid(form.controls.name) ? 'checkmark-circle' : 'close-circle'">
+      </ion-icon>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+     
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'CODE' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-icon slot="start" color="light" [color]="isFieldValid(form.controls.secretquestion) ? 'primary' : 'medium'"
+        [name]="isFieldValid(form.controls.secretquestion) ? 'checkmark-circle' : 'close-circle'">
+      </ion-icon>
+      <ion-input type="text" formControlName="secretquestion"
+        (keyup.enter)="signUpForm.ngSubmit.emit()">
+      </ion-input>
+    </ion-item>
+
+
+ 
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'PASSWORD' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-icon slot="start" color="light" [color]="isFieldValid(form.controls.password) ? 'primary' : 'medium'" [name]="isFieldValid(form.controls.password) ? 'checkmark-circle' : 'close-circle'">
+      </ion-icon>
+      <ion-input type="password" formControlName="password" [placeholder]="'PASSWORD_VALIDATION_HELP' | translate">
+      </ion-input>
+    </ion-item>
+
+    <ion-label position="stacked" color="medium">
+      <span class="bold">{{ 'CONFIRM_PASSWORD' | translate }}</span>
+    </ion-label>
+    <ion-item margin-vertical lines="none" color="light">
+      <ion-icon slot="start" color="light" [color]="isFieldValid(form.controls.confirmPassword) ? 'primary' : 'medium'"
+        [name]="isFieldValid(form.controls.confirmPassword) ? 'checkmark-circle' : 'close-circle'">
+      </ion-icon>
+      <ion-input type="password" formControlName="confirmPassword"
+        (keyup.enter)="signUpForm.ngSubmit.emit()">
+      </ion-input>
+    </ion-item>
+
+
+
+
+
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar text-center>
+    <ion-button strong shape="round" color="primary"
+      [disabled]="isLoadingViewVisible"
+      (click)="myForm.ngSubmit.emit()">
+      <ion-spinner color="light" *ngIf="isLoadingViewVisible"></ion-spinner>
+      <span *ngIf="!isLoadingViewVisible">{{ 'SUBMIT' | translate }}</span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
